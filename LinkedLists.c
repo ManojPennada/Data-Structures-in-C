@@ -4,19 +4,29 @@
 #include <stdio.h>   
 #include <stdlib.h>
 typedef struct node{    int data;    struct node *next;}Node;
-Node* insertAtBeg(Node *head, int val){
-    Node nn = (Node)malloc(sizeof(Node));
-    nn->data = val;    nn->next=head;
+Node* insertAtBeg(Node *head, int val)
+{
+    Node *nn = (Node*)malloc(sizeof(Node));
+    nn -> data = val;    
+    nn -> next=head;
     return nn;
 }
-void display(Node *head){
-    if(head){ display(head->next);  printf("%d ",head->data); }
+void display(Node *head)
+{
+    if(head){ display(head->next);  printf("%d\t",head->data); }
 }
 int main()
 {
-    Node *head=NULL;
-    int i;
-    for(i=1;i<=5;i++){ head = insertAtBeg(head,i); }
+    int temp;
+    Node *head = NULL;
+    int i; 
+    for(i=1;i<=5;i++)   //change i if you want to
+    {
+        printf("\nEnter : ");
+        scanf("%d",&temp);
+        head = insertAtBeg(head,temp); 
+    }
+    printf("\n");
     display(head);    
     return 0;
 }
