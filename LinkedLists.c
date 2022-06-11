@@ -26,7 +26,7 @@ int main()
         scanf("%d",&temp);
         head = insertAtBeg(head,temp); 
     }
-    printf("\n");
+    printf("\nThe Entered List is:\n");
     display(head);    
     return 0;
 }
