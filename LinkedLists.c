@@ -167,3 +167,97 @@ int main(){
     display(head);
     return 0;
 }
+
+
+//INSERT AT ANY POSITION SNIPPET...................................
+//NOTE: THIS IS ONLY A SNIPPET. NOT THE WHOLE CODE.
+
+int pos()
+{
+        NODE *ptr,*temp;
+        int i,pos;
+        temp=(NODE*)malloc(sizeof(struct node));
+        if(temp==NULL)
+        {
+                printf("\nOut of Memory Space:\n");
+                return 0;
+        }
+        printf("\nEnter the position for the new Roll number to be inserted:");
+        scanf("%d",&pos);
+        printf("\nEnter: ");
+        scanf("%d",&temp->data) ;
+        temp->next=NULL;
+        if(pos==0)
+        {
+                temp->next=start;
+                start=temp;
+        }
+        else
+        {
+                for(i=0,ptr=start;i<pos-1;i++) { ptr=ptr->next;
+                        if(ptr==NULL)
+                        {
+                                printf("\nPosition not found\n");
+                                return 0;
+                        }
+                }
+                temp->next = ptr->next ;
+                ptr->next=temp;
+        }
+}
+
+
+//DELETE AT ANY POSITION SNIPPET........................................
+//NOTE: THIS IS ONLY A SNIPPET. NOT THE WHOLE CODE.
+
+void delete(int pos)
+{
+    NODE *temp = head;       // Creating a temporary variable pointing to head
+    int i;                    
+    if(pos==0)
+    {
+        printf("\nElement deleted is : %d\n",temp->data);
+        head=head->next;        // Advancing the head pointer
+        temp->next=NULL;
+        free(temp);             // Node is deleted
+    }
+    else
+    {
+        for(i=0;i<pos-1;i++)
+        {
+            temp=temp->next;
+        }
+        Node *del =temp->next;       
+        temp->next=temp->next->next;
+        printf("\nElement deleted is : %d\n",del->data);      
+        del->next=NULL;
+        free(del);                        
+    }
+}
+
+//SEARCHING IN THE LINKED LIST SNIPPET..................................
+//NOTE: THIS IS ONLY A SNIPPET. NOT THE WHOLE CODE.
+
+int search()
+{
+	NODE *ptr;
+	int src=0;
+	if(start==NULL)
+        {
+                printf("\nList is empty:");
+                return 0;
+        }
+	else
+	{
+		ptr=start;
+        printf("\nEnter the Roll Number:\n");
+        scanf("%d",&src);
+        while(ptr!=NULL)
+        {
+        	if(src==ptr->data)
+			printf("%d\n",ptr->data);
+            ptr=ptr->next ;
+        }
+	}
+}
+
